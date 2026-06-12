@@ -13,7 +13,7 @@ body{
   font-family:'Space Grotesk',sans-serif;color:var(--text-primary);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-#root{width:100%;display:flex;justify-content:center}
+#root{width:100%;display:flex;flex-direction:column;align-items:center}
 
 .bento{
   width:100%;max-width:1120px;
@@ -146,6 +146,43 @@ canvas{display:block;width:100%;height:100%}
 .doto-mid{font-family:'Doto',sans-serif;font-weight:400;font-size:44px;line-height:1;color:var(--text-display);font-variant-numeric:tabular-nums}
 .rec{display:flex;align-items:center;gap:7px;justify-content:flex-end;color:var(--accent-red);font-weight:700}
 .pulse-meta{display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex:none}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 28px;
+}
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #d4d4d8;
+  background: rgba(20, 20, 22, 0.6);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 24px 48px -16px rgba(0, 0, 0, 0.6);
+  transition:
+    color 140ms,
+    border-color 140ms,
+    background 140ms,
+    transform 140ms;
+}
+.social-btn:hover {
+  color: #fafafa;
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+.social-btn:active {
+  transform: translateY(0);
+}
 
 .pal-overlay{
   position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.65);
