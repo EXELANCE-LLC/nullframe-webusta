@@ -72,10 +72,16 @@ function TypedStatus() {
       clearTimeout(t)
     }
   }, [])
+  const sp = txt.lastIndexOf(' ')
+  const head = sp === -1 ? '' : txt.slice(0, sp + 1)
+  const tail = sp === -1 ? txt : txt.slice(sp + 1)
   return (
     <div className="mono-sub right status">
-      {txt}
-      {done && <span className="sq" />}
+      {head}
+      <span className="nowrap">
+        {tail}
+        {done && <span className="sq" />}
+      </span>
     </div>
   )
 }
@@ -121,7 +127,7 @@ export function ClockHero({ index }: { index: number }) {
     <Card
       index={index}
       label="Local time · New York"
-      right={<>SYS.V4.0.0<br />Uptime {uptime}</>}
+      right={<>SYS.V4.0.1<br />Uptime {uptime}</>}
       className="hero"
       essential
     >

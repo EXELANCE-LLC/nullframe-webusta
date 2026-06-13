@@ -8,7 +8,7 @@ export function MemoryCard({ index }: { index: number }) {
   const shown = useBootNumber(snap.heapMB)
 
   return (
-    <Card index={index} label="Memory" tag={snap.heapReal ? 'LIVE' : 'SIM'}>
+    <Card index={index} label="Memory" tag={snap.heapReal ? 'LIVE' : 'SIM'} tagAlways>
       <div className="metric">
         {shown}
         <small>MB</small>

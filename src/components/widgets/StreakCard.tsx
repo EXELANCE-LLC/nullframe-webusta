@@ -33,7 +33,7 @@ export function StreakCard({ index }: { index: number }) {
   }, [motionOff])
 
   return (
-    <Card index={index} label="Streak" tag="SIM">
+    <Card index={index} label="Streak" tag="SIM" tagAlways>
       <div className="doto-val">
         {scramble ?? shown}
         <small>D</small>
