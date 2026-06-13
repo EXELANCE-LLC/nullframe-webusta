@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'motion/react'
 import { Card } from '../Card'
 import { useCtl } from '../../system/hooks'
-import { contributions, totalContribs, USER, WEEKS, DAYS } from '../../system/fake'
+import { contributions, totalContribs, WEEKS, DAYS } from '../../system/fake'
 
 const GAP = 3
 
@@ -43,7 +43,7 @@ export function ContributionsCard({ index }: { index: number }) {
   const shown = dims.weeks ? contributions.slice(-dims.weeks * DAYS) : []
 
   return (
-    <Card index={index} label={`Contributions · ${USER}`} right={`${totalContribs.toLocaleString('en-US')} / YR`} className="contrib">
+    <Card index={index} label="Build history" right={`${totalContribs.toLocaleString('en-US')} / YR`} className="contrib">
       <div
         className="contrib-grid"
         ref={gridRef}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { Card } from '../Card'
-import { commitMessages, USER } from '../../system/fake'
+import { commitMessages } from '../../system/fake'
 
 type Line = { msg: string; time: string }
 
@@ -51,7 +51,7 @@ export function ActivityCard({ index }: { index: number }) {
   }, [])
 
   return (
-    <Card index={index} label={`Activity · ${USER}`} right="push · main" className="feed">
+    <Card index={index} label="System log" right="stream · local" className="feed">
       <div className="feed-rows">
         {typing && (
           <div className="feed-row">

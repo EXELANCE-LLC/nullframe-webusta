@@ -55,6 +55,7 @@ let batteryReal = false
 let autoSweep = true
 let sweepTimer = 0
 let bucketTimer = 0
+let releaseBattery: (() => void) | null = null
 const buckets = new Int16Array(60)
 let bucketIdx = 0
 
@@ -153,6 +154,10 @@ function onVisibility() {
   }
 }
 
+function onNetworkStateChange() {
+  publish()
+}
+
 function startSweep() {
   clearInterval(sweepTimer)
   if (autoSweep) {
@@ -197,15 +202,30 @@ export const bus = {
       buckets[bucketIdx] = 0
     }, 1000)
     startSweep()
-    const getBattery = (navigator as { getBattery?: () => Promise<{ level: number; charging: boolean; addEventListener: (n: string, f: () => void) => void }> }).getBattery
+    window.addEventListener('online', onNetworkStateChange)
+    window.addEventListener('offline', onNetworkStateChange)
+    const getBattery = (navigator as {
+      getBattery?: () => Promise<{
+        level: number
+        charging: boolean
+        addEventListener: (name: string, listener: () => void) => void
+        removeEventListener: (name: string, listener: () => void) => void
+      }>
+    }).getBattery
     getBattery?.call(navigator).then(b => {
+      if (!running) return
       const update = () => {
         battery = { level: b.level, charging: b.charging }
         batteryReal = true
+        publish()
       }
       update()
       b.addEventListener('levelchange', update)
       b.addEventListener('chargingchange', update)
+      releaseBattery = () => {
+        b.removeEventListener('levelchange', update)
+        b.removeEventListener('chargingchange', update)
+      }
     }).catch(() => {})
     if (!getBattery) {
       battery = { level: 0.87, charging: false }
@@ -221,10 +241,14 @@ export const bus = {
     cancelAnimationFrame(raf)
     clearInterval(bucketTimer)
     clearInterval(sweepTimer)
+    releaseBattery?.()
+    releaseBattery = null
     window.removeEventListener('pointermove', onPointerMove)
     window.removeEventListener('pointerdown', onInput)
     window.removeEventListener('keydown', onInput)
     window.removeEventListener('wheel', onInput)
+    window.removeEventListener('online', onNetworkStateChange)
+    window.removeEventListener('offline', onNetworkStateChange)
     document.removeEventListener('visibilitychange', onVisibility)
   },
 }

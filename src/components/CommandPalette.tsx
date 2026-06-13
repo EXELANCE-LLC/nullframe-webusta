@@ -43,6 +43,7 @@ export function CommandPalette() {
   return (
     <motion.div
       className="pal-overlay"
+      role="presentation"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -51,6 +52,9 @@ export function CommandPalette() {
     >
       <motion.div
         className="pal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Command palette"
         initial={{ opacity: 0, y: -14, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -10, scale: 0.98 }}
@@ -63,11 +67,13 @@ export function CommandPalette() {
           value={q}
           onChange={e => setQ(e.target.value)}
           placeholder="RUN COMMAND…"
+          aria-label="Filter commands"
           spellCheck={false}
         />
         {list.length === 0 && <div className="pal-empty">NO MATCH</div>}
         {list.map((c, i) => (
-          <div
+          <button
+            type="button"
             key={c.label}
             className={`pal-row ${i === sel ? 'sel' : ''}`}
             onMouseEnter={() => setSel(i)}
@@ -78,7 +84,7 @@ export function CommandPalette() {
           >
             <span>{c.label}</span>
             <span className="dim">↵</span>
-          </div>
+          </button>
         ))}
       </motion.div>
     </motion.div>

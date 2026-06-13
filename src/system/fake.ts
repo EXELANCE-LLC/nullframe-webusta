@@ -1,5 +1,3 @@
-export const USER = '@nullframe'
-
 function mulberry32(seed: number) {
   let a = seed
   return () => {

@@ -1,4 +1,4 @@
-# PROJECT NULLFRAME (SYS.V4) — Nothing-inspired telemetry dashboard
+# SYSTEM/01 — Nothing-inspired telemetry dashboard
 
 React + Vite + TypeScript + Motion. Single-page bento dashboard in the Nothing
 design language. Deploys to Vercel with this folder as the project root.
@@ -17,7 +17,7 @@ design language. Deploys to Vercel with this folder as the project root.
 - Real data where the browser exposes it (heap, battery, connection, fps,
   input); seeded fakes otherwise (`src/system/fake.ts`). Cards are tagged
   LIVE or SIM accordingly.
-- GitHub-themed widgets are intentionally fake (@nullframe). No network calls.
+- Build-history widgets use seeded local simulation. No network calls.
 
 ## Design DNA (Nothing)
 - Palette tokens live in `styles.css` only — never hardcode grays elsewhere.
