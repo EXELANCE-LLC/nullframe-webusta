@@ -16,6 +16,7 @@ type Props = {
 
 export function Card({ index, label, right, tag, tagAlways = false, className = '', essential = false, children }: Props) {
   const [sweep, setSweep] = useState(false)
+  const [shining, setShining] = useState(false)
   const ctl = useCtl()
   const reduced = useReducedMotion() || ctl.motionOff
 
@@ -39,9 +40,12 @@ export function Card({ index, label, right, tag, tagAlways = false, className = 
       initial={reduced ? { opacity: 0 } : { opacity: 0, y: 22, scale: 0.93 }}
       animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
       transition={{ type: 'spring', stiffness: 380, damping: 26, delay: index * 0.07 }}
+      onMouseEnter={() => {
+        if (!reduced && !shining) setShining(true)
+      }}
     >
-      <span className="shine" />
-      {tag && <span className={`tag ${tagAlways ? 'always' : ''}`}>{tag}</span>}
+      <span className={`shine ${shining ? 'play' : ''}`} onAnimationEnd={() => setShining(false)} />
+      {tag && <span key={tag} className={`tag ${tagAlways ? 'always' : ''}`}>{tag}</span>}
       <div className="meta-row">
         <span>{label}</span>
         {right && <span className="right">{right}</span>}

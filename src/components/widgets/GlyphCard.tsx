@@ -33,7 +33,6 @@ function easeOutBack(p: number) {
 }
 
 export function GlyphCard({ index }: { index: number }) {
-  // ignores the in-app Motion toggle on purpose — the glyph reel always runs; OS reduced-motion still wins
   const motionOff = useReducedMotion() ?? false
   const ref = useRef<HTMLCanvasElement>(null)
 

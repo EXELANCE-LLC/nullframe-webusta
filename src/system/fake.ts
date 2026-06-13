@@ -48,8 +48,8 @@ export const commitMessages = [
 
 export const statusMessages = [
   'SYS NOMINAL · ALL CHANNELS GREEN',
-  'PUSH main ← feat/glyph-grid',
-  'CI GREEN · 247 TESTS · 0 FLAKY',
-  'GLYPH INTERFACE · READY',
+  'LAST PUSH main ← feat/glyph-grid',
+  'CI GREEN · 247 TESTS PASSED · 0 FLAKY',
+  'GLYPH INTERFACE SYNCED · READY',
   'ZERO DROPPED FRAMES · COMPOSITE OK',
 ]

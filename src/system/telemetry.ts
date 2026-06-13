@@ -133,7 +133,6 @@ function onPointerMove(e: PointerEvent) {
   if (dt > 0 && dt < 0.2) {
     velTarget = Math.min(4000, d / dt)
   }
-  // ~240px of travel counts as one input event so the rate moves without clicks
   distAcc += d
   while (distAcc >= 240) {
     buckets[bucketIdx]++

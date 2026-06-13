@@ -10,7 +10,7 @@ export function RenderCard({ index }: { index: number }) {
   const pct = Math.min(1, snap.fps / 60)
 
   return (
-    <Card index={index} label="Render" tag="LIVE">
+    <Card index={index} label="Render" tag="LIVE" tagAlways>
       <div className="ring-wrap">
         <svg viewBox="0 0 110 110">
           <circle className="ring-bg" cx="55" cy="55" r={RING_R} />
