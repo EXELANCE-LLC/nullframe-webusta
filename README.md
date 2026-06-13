@@ -1,12 +1,10 @@
-# PROJECT NULLFRAME
+# SYSTEM/01
 
 **A live telemetry dashboard in the Nothing design language.** Dot-matrix
 numerals, a glyph-grid icon reel, and ten bento widgets that read *real*
 signals from your browser — frame rate, JS heap, battery, network, input —
 rendered like the industrial instrument panel of a design engineer's
-workstation in New York.
-
-<img width="800" height="564" alt="ezgif-6ebe98534d0a1056" src="https://github.com/user-attachments/assets/62151183-b537-4123-bc68-d6e250d1078f" />
+workstation.
 
 ## What's actually live
 
@@ -14,14 +12,14 @@ Every card is tagged honestly:
 
 | Widget | Source | Tag |
 |---|---|---|
-| Clock | Real time, pinned to America/New_York | — |
+| Clock | Real time in the visitor's local time zone | — |
 | Render | Your actual frame rate + frame time, measured off the rAF loop | `LIVE` |
 | Memory | JS heap via `performance.memory` (Chromium) | `LIVE` / `SIM` |
 | Battery | Battery Status API (Chromium) | `LIVE` / `SIM` |
 | Network | Downlink + RTT via Network Information API (Chromium) | `LIVE` / `SIM` |
 | Input seismograph | Your cursor velocity and input rate, drawn live | `LIVE` |
 | Glyph G1 | Canvas icon reel — disc, ring, brackets, pause, dither | — |
-| Contributions / Streak / Activity | Seeded fakes for `@nullframe` | `SIM` |
+| Build history / Streak / System log | Seeded local simulation | `SIM` |
 
 Where a browser doesn't expose an API (Safari, Firefox, iOS), the card falls
 back to seeded simulated data and says so — `SIM`, not a lie.
@@ -36,7 +34,7 @@ the tab is hidden, canvases cap their device-pixel-ratio at 2 and redraw at
 ≤30 fps, and offscreen canvases skip work entirely. It runs cool on a phone.
 
 Press **⌘K** for the command palette: focus mode, sync sweep, clock reroll,
-motion toggle.
+motion toggle. Display preferences persist between visits.
 
 ## Stack
 
@@ -57,6 +55,3 @@ Built on Nothing's visual language: dot-matrix as structure (Doto), Space Mono
 for machine text, Space Grotesk for human text, sharp segments inside 16px
 cards, motion that slams and settles instead of floating, and brand red
 exactly once. Not affiliated with Nothing Technology — just an admirer.
-
-Original idea inspired by one long prompt from
-[@dominikmartn](https://x.com/dominikmartn).
