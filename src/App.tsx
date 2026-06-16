@@ -73,7 +73,7 @@ export default function App() {
       {/* New Footer Component */}
       <footer className={`system-footer ${motionOff ? 'nofx' : ''}`}>
         <div className="footer-text">
-          Built with <span className="heart-icon">♥</span> by Webusta LLC
+          Built with love <span className="heart-icon">♥</span> WebustaLLC
         </div>
       </footer>
 
