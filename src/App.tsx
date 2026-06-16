@@ -69,6 +69,14 @@ export default function App() {
         <SeismoCard index={8} />
         <ActivityCard index={9} />
       </main>
+
+      {/* New Footer Component */}
+      <footer className={`system-footer ${motionOff ? 'nofx' : ''}`}>
+        <div className="footer-text">
+          Built with love <span className="heart-icon">♥</span> WebustaLLC
+        </div>
+      </footer>
+
       <AnimatePresence>{paletteOpen && <CommandPalette />}</AnimatePresence>
     </CtlCtx.Provider>
   )
